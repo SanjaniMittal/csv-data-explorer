@@ -6,7 +6,9 @@ The application provides powerful search, filtering, sorting, pagination, and CS
 
 ## 🚀 Live Demo
 
-Coming soon.
+## 🚀 Live Demo
+
+[View Live Demo](https://sanjanimittal.github.io/csv-data-explorer/)
 
 ## 📌 Features
 
