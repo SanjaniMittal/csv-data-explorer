@@ -6,7 +6,15 @@ An advanced, interactive React web application that empowers users to explore, f
 
 ---
 
-## 🚀 Key Interactive Features
+## 🚀 Live Demo
+
+Explore the live application directly in your browser:
+
+👉 **[https://sanjanimittal.github.io/csv-data-explorer/](https://sanjanimittal.github.io/csv-data-explorer/)**
+
+---
+
+## 🌟 Key Interactive Features
 
 ### ⚡ 1-Click Instant Exploration
 * **Pre-loaded Demo Datasets**: Jump in immediately without hunting for a file:
@@ -116,10 +124,14 @@ npm run dev
 
 The app will be available at `http://localhost:5173`.
 
-### 3. Production Build
+### 3. Production Build & Deployment
 
 ```bash
+# Build for production
 npm run build
+
+# Deploy to GitHub Pages
+npm run deploy
 ```
 
 ---
