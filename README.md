@@ -1,199 +1,129 @@
-# CSV Data Explorer
+# CSV Data Explorer 📊
 
-A modern React-based web application that allows users to upload CSV files and explore their data directly in the browser.
+An advanced, interactive React web application that empowers users to explore, filter, visualize, analyze, and transform CSV datasets entirely in the browser with zero server setup or data privacy concerns.
 
-The application provides powerful search, filtering, sorting, pagination, and CSV export functionality without requiring a backend or database.
+![CSV Data Explorer](https://img.shields.io/badge/React-19-blue.svg) ![Vite-8](https://img.shields.io/badge/Vite-8-purple.svg) ![Client--Side-100%25-green.svg](https://img.shields.io/badge/Client--Side-100%25-green.svg)
 
-## 🚀 Live Demo
+---
 
-## 🚀 Live Demo
+## 🚀 Key Interactive Features
 
-[View Live Demo](https://sanjanimittal.github.io/csv-data-explorer/)
+### ⚡ 1-Click Instant Exploration
+* **Pre-loaded Demo Datasets**: Jump in immediately without hunting for a file:
+  * 🌐 *Global Tech & Retail Sales* (Multi-regional revenue, profit margins, product categories)
+  * 👥 *Employee Directory & Compensation* (Department, salary, ratings, remote status)
+  * 🌍 *Global Cities Climate & Sustainability* (Temperature, AQI, renewable energy %)
+* **Drag-and-Drop Zone**: Smooth drag-and-drop CSV upload with visual feedback.
+* **Paste Raw CSV Modal**: Directly paste raw CSV/TSV text with 1-click parsing.
 
-## 📌 Features
+### 📊 Dynamic Visual Analytics (Charts)
+* **Interactive SVG Charts**:
+  * 📊 **Bar Chart**: Compare metrics across categories with hover tooltips and dynamic scaling.
+  * 📈 **Line / Trend Chart**: Visualize sequential or time-series data with smooth gradient fills and hover points.
+  * 🍩 **Donut / Pie Chart**: Dynamic distribution slices with hover expansion, percentages, and interactive legend.
+  * ⚬ **Scatter Plot**: 2D numeric correlation between any two continuous variables.
+* **Chart Customization**:
+  * Dimension (Group by) & Metric selector
+  * Aggregations: `Sum`, `Average`, `Min`, `Max`, `Count`
+  * Slices limiter: `Top 5`, `Top 10`, `Top 15`, `All`
+  * Dynamic sorting: `Highest First`, `Lowest First`, `Alphabetical`
+  * 🎨 **Color Themes**: Indigo Blue, Emerald Green, Sunset Orange, Violet Purple
+  * 📥 **Export SVG**: Download generated chart directly as vector graphics.
 
-* 📁 **CSV File Upload** — Upload `.csv` files directly from your computer
-* 🔍 **Global Search** — Search across all columns simultaneously
-* 🎯 **Column Filters** — Filter data using individual column values
-* 🔢 **Numeric Filtering** — Set minimum and maximum values for numeric columns
-* ↕️ **Sorting** — Sort columns in ascending or descending order
-* 📊 **Data Summary** — View total records, filtered records, and number of columns
-* 📄 **Pagination** — Navigate large datasets page by page
-* 🔢 **Rows per Page** — Choose between 10, 25, 50, or 100 rows
-* 🧹 **Clear Filters** — Quickly reset search and filter conditions
-* 📥 **CSV Export** — Download filtered results as a new CSV file
-* 🗑️ **Remove File** — Remove the currently loaded dataset
-* ⚠️ **Error Handling** — Handles invalid or empty CSV files
-* ⏳ **Loading State** — Displays processing feedback while importing data
-* 📱 **Responsive Design** — Works across desktop and smaller screens
+### 🩺 Data Profiling & Column Health
+* **Type Auto-Detection**: Accurately classifies columns as `Numeric`, `Date`, `Boolean`, or `Text`.
+* **Completeness Meter**: Progress bar showing valid vs missing/null values for each column.
+* **Numeric Summaries**: Instant calculations for `Min`, `Max`, `Average`, `Median`, `Sum`, and a **mini sparkline histogram**.
+* **Categorical Frequency**: Top values with distribution percentages. **Clicking any value directly filters the table!**
+
+### 🔎 Advanced Filtering & Table Interactivity
+* **Global Search with Keyword Highlighting**: Matching search terms are visually highlighted directly in the table cells.
+* **Active Filter Pills**: All active filters (search, numeric ranges, date ranges, categories) are displayed as interactive badges with 1-click removal.
+* **Interactive Column Filters Drawer**: Expandable filter panel with type-specific inputs (date picker, min/max numbers, categorical dropdowns).
+* **Clickable Row Detail Inspector**: Click any row to view its full field breakdown with JSON copying and Next/Previous navigation.
+* **Column Visibility Manager**: Select which columns are shown or hidden.
+* **Table Row Density**: Toggle between `Comfortable` and `Compact` viewing modes.
+* **Row Deletion**: Delete rows directly from the table with instant count updates.
+
+### 🛠️ Data Tools & Transform
+* **Find & Replace**: Batch replace values or fix typos across any target column.
+* **Deduplication**: Scan and remove duplicate rows with 1 click.
+* **Insert Record**: Add new records directly to your dataset.
+* **Multi-Format Export**: Export filtered data as `.csv`, `.json`, `.tsv`, or copy as a formatted GitHub Markdown table.
+
+### 🌙 Dark / Light Mode
+* Sleek theme switcher with system persistence via `localStorage`.
+
+---
 
 ## 🛠️ Tech Stack
 
-* **React**
-* **Vite**
-* **JavaScript**
-* **Papa Parse**
-* **CSS**
-* **ESLint**
+* **React 19**
+* **Vite 8**
+* **Papa Parse 5** (High-performance CSV parsing & unparsing)
+* **Custom Responsive SVG Visualizations** (Zero heavy chart dependency overhead)
+* **Modern CSS3** (Custom properties, dark/light themes, smooth transitions)
+
+---
 
 ## 📂 Project Structure
 
 ```text
 csv-data-filter/
-│
 ├── public/
-│
 ├── src/
-│   ├── App.jsx
-│   ├── App.css
+│   ├── assets/
+│   ├── components/
+│   │   ├── ActiveFilters.jsx       # Active filter badges with 1-click removal
+│   │   ├── ChartSection.jsx        # Interactive Bar, Line, Donut, Scatter charts
+│   │   ├── ColumnManagerModal.jsx  # Show/hide table columns
+│   │   ├── ColumnStats.jsx         # Data health, histograms & profiling
+│   │   ├── DataTable.jsx           # Search highlighting, sorting, pagination
+│   │   ├── DataTools.jsx           # Find & Replace, deduplicate, new row
+│   │   ├── Header.jsx              # Logo, sample selector, dark mode toggle
+│   │   ├── RowDetailModal.jsx      # Row inspector with JSON copy & navigation
+│   │   ├── SummaryCards.jsx        # Records, filters & columns metrics
+│   │   ├── Toast.jsx               # Feedback notifications
+│   │   └── UploadZone.jsx          # Drag-drop, browse, raw CSV paste
+│   ├── data/
+│   │   └── sampleDatasets.js       # Pre-loaded demo datasets
+│   ├── utils/
+│   │   └── csvHelpers.js           # Type detection, aggregations, stats, exports
+│   ├── App.css                     # Modern dashboard styles & dark theme
+│   ├── App.jsx                     # Root application coordinator
+│   ├── index.css                   # Base typography and design tokens
 │   └── main.jsx
-│
-├── .gitignore
-├── eslint.config.js
 ├── index.html
 ├── package.json
-├── package-lock.json
-├── vite.config.js
-└── README.md
+└── vite.config.js
 ```
+
+---
 
 ## ⚙️ Getting Started
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/SanjaniMittal/csv-data-explorer.git
-```
-
-### 2. Navigate to the project
-
-```bash
-cd csv-data-explorer
-```
-
-### 3. Install dependencies
+### 1. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 4. Start the development server
+### 2. Start development server
 
 ```bash
 npm run dev
 ```
 
-The application will be available at:
+The app will be available at `http://localhost:5173`.
 
-```text
-http://localhost:5173
-```
-
-## 📊 How to Use
-
-1. Open the application in your browser.
-2. Click **Choose CSV File**.
-3. Upload a valid `.csv` file.
-4. Explore the uploaded dataset in the table.
-5. Use the search box to search across all columns.
-6. Apply individual column filters.
-7. Use Min/Max fields for numeric columns.
-8. Click a column heading to sort the data.
-9. Navigate through pages using pagination.
-10. Click **Export Filtered Data** to download the filtered dataset.
-
-## 🧪 Example Dataset
-
-The application can be tested with datasets containing information such as:
-
-* Brand
-* City
-* Region
-* Store format
-* Stock status
-* Promotion status
-* Percentage-based metrics
-
-For example:
-
-```text
-brand,city,region,store_format,in_stock,on_promotion,share_of_shelf_pct
-Brand A,Delhi,North,Supermarket,Yes,No,24.5
-Brand B,Mumbai,West,Hypermarket,Yes,Yes,31.2
-Brand C,Bengaluru,South,Supermarket,No,No,18.7
-```
-
-## 🔍 Filtering Example
-
-The application supports both categorical and numeric filtering.
-
-### Categorical filtering
-
-For columns such as:
-
-```text
-Brand
-City
-Region
-Store Format
-```
-
-users can select a specific value from the dropdown.
-
-### Numeric filtering
-
-For numeric columns, users can specify:
-
-```text
-Min → 20
-Max → 50
-```
-
-The table will display only records within that range.
-
-## 📥 Export
-
-After applying search and filters, click:
-
-**Export Filtered Data**
-
-The application generates a new CSV file containing only the currently filtered records.
-
-## 🏗️ Production Build
-
-To create a production build:
+### 3. Production Build
 
 ```bash
 npm run build
 ```
 
-To preview the production build locally:
-
-```bash
-npm run preview
-```
-
-## 📈 Future Improvements
-
-Potential future enhancements include:
-
-* 📊 Interactive charts and visualizations
-* 📈 Dataset statistics and analytics
-* 🌙 Dark mode
-* 💾 Local storage for uploaded datasets
-* 🔎 Advanced multi-condition filtering
-* 📤 Drag-and-drop CSV upload
-* 📱 Improved mobile table experience
-* 📊 Automatic data-type detection
-* 📥 Export to additional formats
-
-## 👩‍💻 Author
-
-**Sanjani Mittal**
-
-GitHub: [SanjaniMittal](https://github.com/SanjaniMittal)
+---
 
 ## 📄 License
 
-This project is available for educational and portfolio purposes.
-
+Available for personal, educational, and portfolio purposes.
